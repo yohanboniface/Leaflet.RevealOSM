@@ -43,6 +43,7 @@ L.Control.RevealOSM = L.Control.extend({
         this._map.off('click', this._onClick, this);
         this._map.off("preclick", this._preventCallOnClickToClose, this);
         L.DomUtil.removeClass(this._map._container, "reveal-osm");
+        L.DomUtil.removeClass(this._map._container, "loading");
     },
 
     _preventCallOnClickToClose: function (e) {
@@ -137,6 +138,7 @@ L.Control.RevealOSM = L.Control.extend({
         xhr.open("GET", uri, true);
 
         xhr.onload = function(e) {
+            L.DomUtil.removeClass(self._map._container, "loading");
             if (this.status == 200) {
                 var data;
                 try {
@@ -152,6 +154,7 @@ L.Control.RevealOSM = L.Control.extend({
             }
         };
 
+        L.DomUtil.addClass(this._map._container, "loading");
         xhr.send();
     },
 
