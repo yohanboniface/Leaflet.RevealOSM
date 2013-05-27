@@ -69,13 +69,12 @@ L.Control.RevealOSM = L.Control.extend({
     formatContent: function (element) {
         var content = "",
             title = this.formatTitle(element);
-        if (title) {
-            content += title;
-        }
         for (var tag in element.tags) {
             if (!this.isAllowedKey(tag)) { continue;}
             content += this.formatKey(element, tag);
         }
+        content = title + '<ul>' + content + '</ul>';
+        content = '<div class="reveal-osm-popup">' + content + '</div>';
         return content;
     },
 
@@ -88,7 +87,7 @@ L.Control.RevealOSM = L.Control.extend({
     },
 
     formatKey: function (element, key) {
-        return key + " = " + this.formatValue(element, key, element.tags[key]) + "<br />";
+        return '<li><strong>' + key + "</strong> " + this.formatValue(element, key, element.tags[key]) + "</li>";
     },
 
     formatValue: function (element, key, value) {

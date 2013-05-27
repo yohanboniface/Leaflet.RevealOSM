@@ -44,3 +44,9 @@
 .reveal-osm .leaflet-control-reveal-osm span {
     display: inline-block;
 }
+.reveal-osm-popup ul {
+    list-style-image:none;
+    list-style-position:inside;
+    list-style-type:none;
+    padding-left: 0;
+}
