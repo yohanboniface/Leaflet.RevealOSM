@@ -5,7 +5,8 @@ L.Control.RevealOSM = L.Control.extend({
         position: 'topleft',
         apiUrl: 'http://overpass-api.de/api/interpreter?data=',
         queryTemplate: '[out:json];node(around:{radius},{lat},{lng})[name];out body qt 1;',
-        helpText: "Click on names to get more infos"
+        helpText: "Click on names to get more infos",
+        excludeKeys: [/source/, /^ref\:/ ] //
     },
 
     onAdd: function (map) {
@@ -56,6 +57,15 @@ L.Control.RevealOSM = L.Control.extend({
         return L.popup();
     },
 
+    isAllowedKey: function (key) {
+        for(var i=0, l=this.options.excludeKeys.length; i<l; i++) {
+            if (key.match(this.options.excludeKeys[i])) {
+                return false;
+            }
+        }
+        return true;
+    },
+
     formatContent: function (element) {
         var content = "",
             title = this.formatTitle(element);
@@ -63,6 +73,7 @@ L.Control.RevealOSM = L.Control.extend({
             content += title;
         }
         for (var tag in element.tags) {
+            if (!this.isAllowedKey(tag)) { continue;}
             content += this.formatKey(element, tag);
         }
         return content;

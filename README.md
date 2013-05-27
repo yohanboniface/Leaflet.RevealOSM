@@ -16,6 +16,7 @@ Available options:
 * `queryTemplate` (default: '[out:json];node(around:{radius},{lat},{lng})[name];out body qt 1;')
 * `helpText`
 * `radius`: radius used to search around the click position
+* `excludeKeys`: Array of regex to tests for excluding some keys
 
 ## Extending the class (more powerfull)
 
