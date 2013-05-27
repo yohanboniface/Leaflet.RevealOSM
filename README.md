@@ -2,6 +2,8 @@
 
 Very simple but extendable plugin to get OSM POIs data on map click.
 
+Check out the [demo](http://yohanboniface.github.io/Leaflet.RevealOSM/).
+
 # Customization
 
 ## Using options (quicker)
@@ -14,6 +16,7 @@ Available options:
 * `queryTemplate` (default: '[out:json];node(around:{radius},{lat},{lng})[name];out body qt 1;')
 * `helpText`
 * `radius`: radius used to search around the click position
+* `excludeKeys`: Array of regex to tests for excluding some keys
 
 ## Extending the class (more powerfull)
 
