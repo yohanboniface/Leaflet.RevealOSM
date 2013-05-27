@@ -2,6 +2,8 @@
 
 Very simple but extendable plugin to get OSM POIs data on map click.
 
+Check out the [demo](http://yohanboniface.github.io/Leaflet.RevealOSM/).
+
 # Customization
 
 ## Using options (quicker)
