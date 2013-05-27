@@ -92,6 +92,9 @@ L.Control.RevealOSM = L.Control.extend({
     },
 
     formatValue: function (element, key, value) {
+        if (value.match(/^http(s)?\:\/\//)) {
+            value = '<a href="' + value + '">' + value + '</a>';
+        }
         return value;
     },
 
