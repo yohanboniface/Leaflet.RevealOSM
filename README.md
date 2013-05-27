@@ -17,6 +17,7 @@ Available options:
 * `helpText`
 * `radius`: radius used to search around the click position
 * `excludeKeys`: Array of regex to tests for excluding some keys
+* `translateKeys`: translate some keys for more human friendly display
 
 ## Extending the class (more powerfull)
 
