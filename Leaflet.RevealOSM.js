@@ -69,13 +69,12 @@ L.Control.RevealOSM = L.Control.extend({
     formatContent: function (element) {
         var content = "",
             title = this.formatTitle(element);
-        if (title) {
-            content += title;
-        }
         for (var tag in element.tags) {
             if (!this.isAllowedKey(tag)) { continue;}
             content += this.formatKey(element, tag);
         }
+        content = title + '<ul>' + content + '</ul>';
+        content = '<div class="reveal-osm-popup">' + content + '</div>';
         return content;
     },
 
@@ -88,7 +87,7 @@ L.Control.RevealOSM = L.Control.extend({
     },
 
     formatKey: function (element, key) {
-        return key + " = " + this.formatValue(element, key, element.tags[key]) + "<br />";
+        return '<li><strong>' + key + "</strong> " + this.formatValue(element, key, element.tags[key]) + "</li>";
     },
 
     formatValue: function (element, key, value) {
@@ -216,31 +215,3 @@ L.Map.addInitHook(function () {
         this.revealOSMControl = (new L.Control.RevealOSM(options)).addTo(this);
     }
 });
-
-
-// getPOIs: function (e) {
-//     var map = this._map,
-//         query = '[out:json];(node["name"]({bbox}););(._;>;);out skel;',
-//         bounds = map.getBounds(),
-//         bbox = [ // s,w,n,e
-//             bounds.getSouth(),
-//             bounds.getWest(),
-//             bounds.getNorth(),
-//             bounds.getEast()
-//         ].join(',');
-//     query = L.Util.template(query, {
-//         bbox: bbox
-//     });
-//     var url = 'http://overpass-api.de/api/interpreter?data=' + encodeURIComponent(query);
-//     L.Storage.Xhr.get(url, {
-//         callback: function (data) {
-//             var element;
-//             for(var i = 0, l = data.elements.length; i < l; i++) {
-//                 element = data.elements[i];
-//                 var latlng = L.latLng([element.lat, element.lon]);
-//                 // L.marker(latlng, {icon: L.divIcon({iconSize: [20,20]})}).addTo(map);
-//                 L.circle(latlng, 10, {fill: false}).addTo(map);
-//             }
-//         }
-//     });
-// },
