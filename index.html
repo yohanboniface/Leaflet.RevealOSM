@@ -34,7 +34,7 @@
         var map = L.map('map', {
             revealOSMControl: true,
             revealOSMControlOptions: {
-                queryTemplate: '[out:json];(node(around:{radius},{lat},{lng})[name];way(around:{radius},{lat},{lng})[name];);out body qt 1;'
+                queryTemplate: '[out:json];(node(around:{radius},{lat},{lng})[name];way(around:{radius},{lat},{lng})[name][highway];);out body qt 1;'
             },
             zoomControl: false
         }).setView([48.39246714732355, -4.432210922241211], 16);
