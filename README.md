@@ -4,6 +4,8 @@ Very simple but extendable plugin to get OSM POIs data on map click.
 
 Check out the [demo](http://yohanboniface.github.io/Leaflet.RevealOSM/).
 
+Here is a (WIP) more tuned example: http://fluv.io (click on harbours, locks or piers). Code is [here](https://github.com/yohanboniface/carte-fluviale/blob/master/carte_fluviale/static/carte_fluviale/CustomRevealOSM.js).
+
 # Customization
 
 ## Using options (quicker)
